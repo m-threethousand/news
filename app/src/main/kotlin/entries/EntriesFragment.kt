@@ -113,7 +113,7 @@ class EntriesFragment : Fragment(), OnItemReselectedListener {
 
         if (state is EntriesModel.State.ShowingCachedEntries && state.conf.mark_scrolled_entries_as_read) {
             model.setRead(
-                entryIds = seenEntries.map { it.id },
+                entryIds = seenEntries.filter { it.id != seenEntries.last().id }.map { it.id },
                 read = true,
             )
 
